@@ -39,8 +39,8 @@ jobs:
           # Delete or comment out this line to disable that
           PUBLISH_ON_WEB: true
         run: |
-          echo "APP_NAME=${Grwin}" >> $GITHUB_ENV
-          echo "DESCRIPTION=${我不知道你们为什么讨厌gr，他们明明没有抢过任何人冠军😓}" >> $GITHUB_ENV
+          echo "APP_NAME=${APP_NAME}" >> $GITHUB_ENV
+          echo "DESCRIPTION=${DESCRIPTION}" >> $GITHUB_ENV
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
           echo "AUTHOR=${AUTHOR}" >> $GITHUB_ENV
           echo "PUBLISH_ON_WEB=${PUBLISH_ON_WEB}" >> $GITHUB_ENV
@@ -115,7 +115,10 @@ jobs:
           pkg.version=process.env.VERSION;\
           pkg.author=process.env.AUTHOR;\
           fs.writeFileSync('./app/package.json',JSON.stringify(pkg,undefined,'\t'));"
-          
+
+      - name: Build with tawb
+        run: tawb build --name "Gr夺了" --description "我不知道你们为什么讨厌gr，他们明明没有抢过任何人冠军😓"
+        
       - name: Build the app
         working-directory: ./app
         env:
